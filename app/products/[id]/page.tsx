@@ -96,7 +96,7 @@ export default function ProductPage() {
       };
 
       // Open Razorpay checkout popup
-      const rzp = new (window as any).Razorpay(options);
+      const rzp = new window.Razorpay(options);
       rzp.open();
     } catch (error) {
       console.error("Payment error:", error);
