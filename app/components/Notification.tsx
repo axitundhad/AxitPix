@@ -27,20 +27,6 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
     }, 3000);
   };
 
-//   return (
-//     <NotificationContext.Provider value={{ showNotification }}>
-//       {children}
-//       {notification && (
-//         <div className="toast toast-bottom toast-end z-[100]">
-//           <div className={`alert ${getAlertClass(notification.type)}`}>
-//             <span>{notification.message}</span>
-//           </div>
-//         </div>
-//       )}
-//     </NotificationContext.Provider>
-//   );
-// 
-
 return (
   <NotificationContext.Provider value={{ showNotification }}>
     {children}
@@ -57,21 +43,6 @@ return (
     )}
   </NotificationContext.Provider>
 );
-}
-
-function getAlertClass(type: NotificationType): string {
-  switch (type) {
-    case "success":
-      return "alert-success";
-    case "error":
-      return "alert-error";
-    case "warning":
-      return "alert-warning";
-    case "info":
-      return "alert-info";
-    default:
-      return "alert-info";
-  }
 }
 
 function getAlertColor(type: NotificationType): string {

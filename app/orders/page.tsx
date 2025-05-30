@@ -7,6 +7,13 @@ import { Loader2, Download } from "lucide-react";
 import { IKImage } from "imagekitio-next";
 import { IMAGE_VARIANTS } from "@/models/Product";
 import { apiClient } from "@/lib/api-client";
+import mongoose from "mongoose";
+
+interface PopulatedProduct {
+  _id: mongoose.Types.ObjectId;
+  name: string;
+  imageUrl: string;
+}
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<IOrder[]>([]);
@@ -57,7 +64,17 @@ export default function OrdersPage() {
               order.variants.type.toUpperCase() as keyof typeof IMAGE_VARIANTS
             ].dimensions;
 
-          const product = order.productId as any;
+          // function isPopulatedProduct(
+          //   product: any
+          // ): product is PopulatedProduct {
+          //   return (
+          //     product &&
+          //     typeof product.name === "string" &&
+          //     typeof product.imageUrl === "string"
+          //   );
+          // }
+
+          const product = order.productId as PopulatedProduct; // fully typed
 
           return (
             <div

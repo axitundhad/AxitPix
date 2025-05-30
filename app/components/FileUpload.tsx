@@ -1,8 +1,8 @@
 "use client";
 import { IKUpload } from "imagekitio-next";
 import { IKUploadResponse } from "imagekitio-next/dist/types/components/IKUpload/props";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
-import { ImageIcon, Loader2 } from "lucide-react";
 
 export default function FileUpload({
   onSuccess,
@@ -30,13 +30,12 @@ export default function FileUpload({
 
   return (
     <div className="space-y-2">
-      
       <IKUpload
         fileName="product-image.png"
         onError={onError}
         onSuccess={handleSuccess}
         onUploadStart={handleStartUpload}
-      //  className="opacity-0 absolute inset-0 w-full h-full cursor-pointer z-10"
+        //  className="opacity-0 absolute inset-0 w-full h-full cursor-pointer z-10"
         className=" file-input text-gray-300 opacity-70 file-input-bordered w-full bg-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-700 transition duration-200 cursor-pointer"
         validateFile={(file: File) => {
           const validTypes = ["image/png", "image/jpeg", "image/webp"];
@@ -53,13 +52,6 @@ export default function FileUpload({
           return true;
         }}
       />
-      {/* <div className="flex items-center gap-2 w-full px-4 py-2 text-sm font-medium text-gray-400 rounded-md shadow-sm cursor-pointer">
-         <ImageIcon className="cursor-pointer" />
-        <label >
-    Upload Product Image
-  </label>
-  </div> */}
-
 
       {uploading && (
         <div className="flex items-center gap-2 text-sm text-primary">

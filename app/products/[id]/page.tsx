@@ -37,7 +37,7 @@ export default function ProductPage() {
       }
 
       try {
-        const data  = await apiClient.getProduct(id.toString());
+        const data = await apiClient.getProduct(id.toString());
         setProduct(data);
       } catch (err) {
         console.error("Error fetching product:", err);
@@ -50,142 +50,62 @@ export default function ProductPage() {
     fetchProduct();
   }, [params?.id]);
 
-  // const handlePurchase = async (variant: ImageVariant) => {
-  //   if (!session) {
-  //     showNotification("Please login to make a purchase", "error");
-  //     router.push("/login");
-  //     return;
-  //   }
-
-  //   if (!product?._id) {
-  //     showNotification("Invalid product", "error");
-  //     return;
-  //   }
-
-  //   try {
-  //     const { orderId, amount } = await apiClient.createOrder({
-  //       productId: product._id,
-  //       variant,
-  //     });
-
-  //     // if (!process.env.NEXT_PUBLIC_NEXT_PUBLIC_RAZORPAY_KEY_ID) {
-  //     //   showNotification("Razorpay key is missing", "error");
-  //     //   return;
-  //     // }
-
-  //     const options = {
-  //       key: process.env.NEXT_PUBLIC_NEXT_PUBLIC_RAZORPAY_KEY_ID,
-  //       amount,
-  //       currency: "USD",
-  //       name: "ImageKit Shop",
-  //       description: `${product.name} - ${variant.type} Version`,
-  //       order_id: orderId,
-  //       handler: function () {
-  //         showNotification("Payment successful!", "success");
-  //         router.push("/orders");
-  //       },
-  //       prefill: {
-  //         email: session.user.email,
-  //       },
-  //     };
-
-  //     const rzp = new (window as any).Razorpay(options);
-  //     rzp.open();
-  //   } catch (error) {
-  //     console.error(error);
-  //     showNotification(
-  //       error instanceof Error ? error.message : "Payment failed",
-  //       "error"
-  //     );
-  //   }
-  // };
-
   const handlePurchase = async (variant: ImageVariant) => {
-  if (!session) {
-    showNotification("Please login to make a purchase", "error");
-    router.push("/login");
-    return;
-  }
+    if (!session) {
+      showNotification("Please login to make a purchase", "error");
+      router.push("/login");
+      return;
+    }
 
-  if (!product?._id) {
-    showNotification("Invalid product", "error");
-    return;
-  }
+    if (!product?._id) {
+      showNotification("Invalid product", "error");
+      return;
+    }
 
-  if (!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID) {
-    showNotification("Razorpay key is missing", "error");
-    return;
-  }
+    if (!process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID) {
+      showNotification("Razorpay key is missing", "error");
+      return;
+    }
 
-  try {
-    // Call your backend to create Razorpay order
-    const { orderId, amount } = await apiClient.createOrder({
-      productId: product._id,
-      variant,
-    });
+    try {
+      // Call your backend to create Razorpay order
+      const { orderId, amount } = await apiClient.createOrder({
+        productId: product._id,
+        variant,
+      });
 
-    // Setup Razorpay options
-    const options = {
-      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-      amount, // in smallest currency unit (e.g., paise for INR, cents for USD)
-      currency: "USD",
-      name: "ImageKit Shop",
-      description: `${product.name} - ${variant.type} Version`,
-      order_id: orderId,
-      handler: function (response: any) {
-        // This runs on payment success
-        showNotification("Payment successful!", "success");
-        router.push("/orders");
-      },
-      prefill: {
-        email: session.user.email,
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
+      // Setup Razorpay options
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount, // in smallest currency unit (e.g., paise for INR, cents for USD)
+        currency: "USD",
+        name: "ImageKit Shop",
+        description: `${product.name} - ${variant.type} Version`,
+        order_id: orderId,
+        handler: function () {
+          // This runs on payment success
+          showNotification("Payment successful!", "success");
+          router.push("/orders");
+        },
+        prefill: {
+          email: session.user.email,
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
 
-    // Open Razorpay checkout popup
-    const rzp = new (window as any).Razorpay(options);
-    rzp.open();
-
-  } catch (error) {
-    console.error("Payment error:", error);
-    showNotification(
-      error instanceof Error ? error.message : "Payment failed",
-      "error"
-    );
-  }
-};
-
-// handler: async function (response: any) {
-//   try {
-//     const res = await fetch("/api/payment-success", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({
-//         razorpayPaymentId: response.razorpay_payment_id,
-//         razorpayOrderId: response.razorpay_order_id,
-//         productId: product._id,
-//         variant,
-//       }),
-//     });
-
-//     const data = await res.json();
-
-//     if (!res.ok) {
-//       throw new Error(data.error || "Payment success handling failed");
-//     }
-
-//     showNotification("Payment successful!", "success");
-//     router.push("/orders");
-//   } catch (err) {
-//     console.error("Payment success error:", err);
-//     showNotification("Payment verified but order creation failed", "error");
-//   }
-// }
-
-
+      // Open Razorpay checkout popup
+      const rzp = new (window as any).Razorpay(options);
+      rzp.open();
+    } catch (error) {
+      console.error("Payment error:", error);
+      showNotification(
+        error instanceof Error ? error.message : "Payment failed",
+        "error"
+      );
+    }
+  };
 
   const getTransformation = (variantType: imageVariantType) => {
     const variant = IMAGE_VARIANTS[variantType];
@@ -220,7 +140,11 @@ export default function ProductPage() {
     <div className="container w-[90%] mx-auto px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Image Section */}
-        <div className={`space-y-4 ${selectedVariant?.type === "WIDE" ? "mt-15" : "mt-0"}`}>
+        <div
+          className={`space-y-4 ${
+            selectedVariant?.type === "WIDE" ? "mt-15" : "mt-0"
+          }`}
+        >
           <div
             className="relative rounded-lg overflow-hidden"
             style={{
@@ -239,7 +163,6 @@ export default function ProductPage() {
                 selectedVariant
                   ? getTransformation(selectedVariant.type)
                   : getTransformation("SQUARE")
-
               }
               className="w-full h-full object-cover"
               loading="eager"
@@ -258,7 +181,9 @@ export default function ProductPage() {
         {/* Product Details Section */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-4xl text-indigo-500 font-bold mb-2">{product.name}</h1>
+            <h1 className="text-4xl text-indigo-500 font-bold mb-2">
+              {product.name}
+            </h1>
             <p className="text-base-content/80 text-indigo-400 text-lg">
               {product.description}
             </p>
@@ -266,7 +191,9 @@ export default function ProductPage() {
 
           {/* Variants Selection */}
           <div className="space-y-4">
-            <h2 className="text-xl text-indigo-500 font-semibold">Available Versions</h2>
+            <h2 className="text-xl text-indigo-500 font-semibold">
+              Available Versions
+            </h2>
             {product.variants.map((variant) => (
               <div
                 key={variant.type}
@@ -328,7 +255,9 @@ export default function ProductPage() {
           {/* License Information */}
           <div className="card bg-base-200">
             <div className="card-body p-4">
-              <h3 className="font-semibold text-indigo-500 mb-2">License Information</h3>
+              <h3 className="font-semibold text-indigo-500 mb-2">
+                License Information
+              </h3>
               <ul className="space-y-2 text-indigo-400">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-success" />

@@ -9,9 +9,9 @@ export interface CreateOrderData {
   variant: ImageVariant;
 }
 
-type FetchOptions = {
+type FetchOptions<T = unknown> = {
   method?: "GET" | "POST" | "PUT" | "DELETE";
-  body?: any;
+  body?: T;
   headers?: Record<string, string>;
 };
 

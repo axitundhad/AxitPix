@@ -5,6 +5,9 @@ declare global{
         conn: Connection | null;
         Promise: Promise<Connection> | null;
     }
+    interface Window {
+    Razorpay: any; // OR the actual Razorpay type if you have it
+  }
 }
 
 export {};
