@@ -44,12 +44,12 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="w-[90%] mx-auto px-4 py-10 rounded-md shadow-lg">
-      <h1 className="text-4xl font-bold mb-10 text-center text-indigo-500">
+    <div className="w-[80%] mx-auto text-indigo-800 px-4 py-10 rounded-md shadow-lg">
+      <h1 className="text-4xl font-bold mb-10 text-center text-indigo-800">
         My Orders
       </h1>
       {orders.length === 0 && (
-        <div className="text-center text-indigo-500 py-20 text-base-content/70 text-lg">
+        <div className="text-center text-indigo-800 py-20 text-base-content/70 text-lg">
           <p className=""> You haven’t made any purchases.</p>
           <p className="mt-2">
             When you buy an image, your order details will show up here for easy
@@ -57,7 +57,7 @@ export default function OrdersPage() {
           </p>
         </div>
       )}
-      <div className="space-y-8 grid grid-cols-1 md:grid-cols-[50%_50%] h-[90%] gap-6 ">
+      <div className="max-w-3xl mx-auto space-y-8">
         {orders.map((order) => {
           const variantDimensions =
             IMAGE_VARIANTS[
@@ -79,7 +79,7 @@ export default function OrdersPage() {
           return (
             <div
               key={order._id?.toString()}
-              className="bg-blue-100 rounded-2xl shadow-2xl hover:shadow-xl transition-shadow duration-300"
+              className="bg-blue-100 border border-indigo-100 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-300"
             >
               <div className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-center">
@@ -132,7 +132,7 @@ export default function OrdersPage() {
                           <p>
                             <span className="font-medium">Status:</span>{" "}
                             <span
-                              className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold tracking-wide ${
+                              className={`inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-semibold tracking-wide ${
                                 order.status === "completed"
                                   ? "bg-green-100 text-green-700"
                                   : order.status === "failed"
@@ -150,20 +150,24 @@ export default function OrdersPage() {
                         <p className="text-2xl font-bold text-base-content">
                           ${order.amount.toFixed(2)}
                         </p>
-                        {order.status === "completed" && (
+                        
                           <a
                             href={`${process.env.NEXT_PUBLIC_URL_ENDPOINT}/tr:q-100,w-${variantDimensions.width},h-${variantDimensions.height},cm-extract,fo-center/${product.imageUrl}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn btn-primary mt-4 sm:mt-0 gap-2"
+                            className={`btn btn-primary mt-4 sm:mt-0 flex items-center gap-2 ${
+                              order.status !== "completed"
+                                ? "pointer-events-none opacity-50"
+                                : ""
+                            }`}
                             download={`image-${order._id
                               ?.toString()
                               .slice(-6)}.jpg`}
                           >
-                            <Download className="w-4 h-4" />
+                            <Download className="w-5 h-4" />
                             Download High Quality
                           </a>
-                        )}
+                        
                       </div>
                     </div>
                   </div>

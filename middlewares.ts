@@ -24,6 +24,12 @@ export default withAuth(
           return true;
         }
 
+         if (
+          pathname.startsWith("/aboutus") 
+        ) {
+          return true;
+        }
+
         //Public route
         if (
           pathname.startsWith("/api/products") ||

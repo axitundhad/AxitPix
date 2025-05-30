@@ -56,21 +56,21 @@ export default function ProductCard({ product }: { product: IProduct }) {
           href={`/products/${product._id}`}
           className="hover:opacity-90 transition-opacity"
         >
-          <h2 className="text-lg font-semibold text-indigo-500 ">
+          <h2 className="text-lg font-semibold text-indigo-800 ">
             {product.name}
           </h2>
         </Link>
 
-        <p className="text-sm  text-indigo-400 line-clamp-2 min-h-[2.5rem]">
+        <p className="text-sm  text-indigo-800 line-clamp-2 min-h-[2.5rem]">
           {product.description}
         </p>
 
         <div className="card-actions justify-between items-center mt-4">
           <div className="flex flex-col">
-            <span className="text-base font-bold text-indigo-500 ">
+            <span className="text-base font-bold text-indigo-800 ">
             From ${lowestPrice.toFixed(2)}
             </span>
-            <span className="text-xs text-indigo-400">
+            <span className="text-xs text-indigo-800">
               {product?.variants?.length} sizes available
             </span>
           </div>

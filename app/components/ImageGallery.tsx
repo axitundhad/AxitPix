@@ -10,14 +10,14 @@ export default function ImageGallery({ products, loading }: ImageGalleryProps) {
   if (loading) {
     return (
       <div className="flex justify-center items-center py-12">
-        <div className="w-12 h-12 border-4 border-indigo-500 border-dashed rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-indigo-800 border-dashed rounded-full animate-spin"></div>
       </div>
     );
   }
 
   if (!Array.isArray(products) || products.length === 0) {
     return (
-        <div className="text-center text-xl py-12 text-indigo-500">
+        <div className="text-center text-xl py-12 text-indigo-800">
         No products found.
       </div>
     );
@@ -25,7 +25,7 @@ export default function ImageGallery({ products, loading }: ImageGalleryProps) {
   if (loading) {
   return (
     <div className="flex justify-center items-center py-12">
-      <div className="w-12 h-12 border-4 border-indigo-500 border-dashed rounded-full animate-spin"></div>
+      <div className="w-12 h-12 border-4 border-indigo-800 border-dashed rounded-full animate-spin"></div>
     </div>
   );
 }

@@ -54,7 +54,7 @@ function getAlertColor(type: NotificationType): string {
     case "warning":
       return "bg-yellow-500 text-black";
     case "info":
-      return "bg-blue-400";
+      return "bg-blue-800";
     default:
       return "bg-gray-500";
   }

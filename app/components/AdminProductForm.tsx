@@ -74,7 +74,7 @@ export default function AdminProductForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full mx-auto bg-white shadow-xl text-indigo-500 rounded-2xl p-6 md:p-8 space-y-6"
+      className="w-full mx-auto bg-white shadow-xl text-indigo-800 rounded-2xl p-6 md:p-8 space-y-6"
     >
       <div className="form-control w-full mx-aut  grid grid-cols-[20%_80%] items-center">
         <label className="label font-medium text-sm md:text-base ">

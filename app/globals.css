@@ -37,9 +37,9 @@ textarea {
 
 :root {
   --background: rgb(200, 219, 238); /* light gray f9fafb */
-  --foreground: #1f2937; /* slate-800 */
-    --accent: #6366f1;      /* indigo-500 */
-   --accent-hover: #4f46e5; /* indigo-600 */
+  --foreground: #6366f1; /* slate-800 */
+    --accent: #3730a3 ;      /* indigo-800 */
+   --accent-hover: #4338ca ; /* indigo-700 */
 
 
   

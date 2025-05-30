@@ -38,18 +38,23 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-blue-200 shadow-md border-b border-gray-200">
+    <header className="sticky top-0 z-50 bg-blue-200 shadow-xl border-b border-gray-200">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center text-3xl font-extrabold text-indigo-500  hover:text-indigo-700  transition gap-2"
-          onClick={() => showNotification("Welcome to ImageKit Shop", "info")}
+          className="flex items-center text-3xl font-extrabold text-indigo-900  hover:text-indigo-700  transition gap-2"
+          onClick={() => showNotification("Welcome to AxitPix ImageKit Shop", "info")}
         >
           <ImageIcon className="w-8 h-8" />
           AxitPix
         </Link>
 
-        <div className="relative" ref={dropdownRef}>
+        <div className="relative flex flex-row space-x-5" ref={dropdownRef}>
+          <Link
+            href="/aboutus"
+            className="flex items-center text-2xl font-semibold text-indigo-900  hover:text-indigo-700  transition gap-2"
+            onClick={() => showNotification("Thank you for visiting – Here's more about who we are and why we created AxitPix.", "info")}
+          >About</Link>
           <button
             onClick={() => setDropdownOpen((prev) => !prev)}
             className="  px-5 py-2.5 font-medium  duration-300 ease-in-out transform cursor-pointer bg-indigo-200 rounded-full p-2 hover:bg-gray-100 transition"
@@ -69,7 +74,7 @@ export default function Header() {
                     <li>
                       <Link
                         href="/admin"
-                        className="block px-4 py-2 text-sm text-indigo-500 bg-blue-100 hover:bg-blue-200  transition"
+                        className="block px-4 py-2 text-sm text-indigo-800 bg-blue-100 hover:bg-blue-200  transition"
                         onClick={() => {
                           showNotification(
                             "Welcome to Admin Dashboard",
@@ -85,7 +90,7 @@ export default function Header() {
                   <li>
                     <Link
                       href="/orders"
-                      className="block px-4 py-2 text-sm text-indigo-500 bg-blue-100 hover:bg-blue-200  transition"
+                      className="block px-4 py-2 text-sm text-indigo-800 bg-blue-100 hover:bg-blue-200  transition"
                       onClick={() => setDropdownOpen(false)}
                     >
                       My Orders

@@ -30,7 +30,7 @@ export default function Login() {
 
   return (
     <div className="max-w-md mx-auto mt-10 bg-blue-100 rounded-xl shadow-2xl p-8 border border-gray-200">
-      <h1 className="text-2xl font-bold mb-6 text-indigo-500 text-center">
+      <h1 className="text-2xl font-bold mb-6 text-indigo-800 text-center">
         Login
       </h1>
       <form onSubmit={handleSubmit} className="space-y-5">
@@ -76,7 +76,7 @@ export default function Login() {
           Don&apos;t have an account?{" "}
           <Link
             href="/register"
-            className="text-indigo-500 hover:text-indigo-600 font-medium"
+            className="text-indigo-800 hover:text-indigo-600 font-medium"
           >
             Register
           </Link>

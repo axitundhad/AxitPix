@@ -171,7 +171,7 @@ export default function ProductPage() {
 
           {/* Image Dimensions Info */}
           {selectedVariant && (
-            <div className="text-sm text-center text-indigo-500 text-base-content/70">
+            <div className="text-sm text-center text-indigo-800 text-base-content/70">
               Preview: {IMAGE_VARIANTS[selectedVariant.type].dimensions.width} x{" "}
               {IMAGE_VARIANTS[selectedVariant.type].dimensions.height}px
             </div>
@@ -181,17 +181,17 @@ export default function ProductPage() {
         {/* Product Details Section */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-4xl text-indigo-500 font-bold mb-2">
+            <h1 className="text-4xl text-indigo-800 font-bold mb-2">
               {product.name}
             </h1>
-            <p className="text-base-content/80 text-indigo-400 text-lg">
+            <p className="text-base-content/80 text-indigo-800 text-lg">
               {product.description}
             </p>
           </div>
 
           {/* Variants Selection */}
           <div className="space-y-4">
-            <h2 className="text-xl text-indigo-500 font-semibold">
+            <h2 className="text-xl text-indigo-800 font-semibold">
               Available Versions
             </h2>
             {product.variants.map((variant) => (
@@ -199,7 +199,7 @@ export default function ProductPage() {
                 key={variant.type}
                 className={`card bg-base-200 cursor-pointer hover:bg-base-300 transition-colors ${
                   selectedVariant?.type === variant.type
-                    ? "ring-2 ring-indigo-400"
+                    ? "ring-2 ring-indigo-800"
                     : ""
                 }`}
                 onClick={() => setSelectedVariant(variant)}
@@ -207,9 +207,9 @@ export default function ProductPage() {
                 <div className="card-body p-4">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                      <ImageIcon className="w-5 h-5 text-indigo-500" />
-                      <div className="text-indigo-400 hover:text-indigo-500">
-                        <h3 className="font-semibold text-indigo-500">
+                      <ImageIcon className="w-5 h-5 text-indigo-800" />
+                      <div className="text-indigo-800 hover:text-indigo-600">
+                        <h3 className="font-semibold text-indigo-800">
                           {
                             IMAGE_VARIANTS[
                               variant.type.toUpperCase() as keyof typeof IMAGE_VARIANTS
@@ -233,7 +233,7 @@ export default function ProductPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-4">
-                      <span className="text-xl text-indigo-500 font-bold">
+                      <span className="text-xl text-indigo-800 font-bold">
                         ${variant.price.toFixed(2)}
                       </span>
                       <button
@@ -255,10 +255,10 @@ export default function ProductPage() {
           {/* License Information */}
           <div className="card bg-base-200">
             <div className="card-body p-4">
-              <h3 className="font-semibold text-indigo-500 mb-2">
+              <h3 className="font-semibold text-indigo-800 mb-2">
                 License Information
               </h3>
-              <ul className="space-y-2 text-indigo-400">
+              <ul className="space-y-2 text-indigo-800">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-success" />
                   <span>Personal: Use in personal projects</span>
