@@ -4,27 +4,58 @@ import Product, { IProduct } from "@/models/Product";
 import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+// export async function GET() {
+//   try {
+//     await connectDB();
+//     const products = await Product.find({}).lean();
+
+//     if (!products || products.length === 0) {
+//       return NextResponse.json(
+//         { message: "No products found" },
+//         { status: 201 }
+//       );
+//     }
+
+//     return NextResponse.json(products );
+//   } catch (error) {
+//     console.error("Error fetching products:", error);
+//     return NextResponse.json(
+//       { error: "Failed to fetching products:" },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+export async function GET(req: NextRequest) {
   try {
     await connectDB();
-    const products = await Product.find({}).lean();
 
-    if (!products || products.length === 0) {
-      return NextResponse.json(
-        { message: "No products found" },
-        { status: 201 }
-      );
+    const { searchParams } = new URL(req.url);
+    const searchQuery = searchParams.get("search")?.toLowerCase();
+
+    let filter = {};
+
+    if (searchQuery) {
+      filter = {
+        $or: [
+          { name: { $regex: searchQuery, $options: "i" } },
+          { description: { $regex: searchQuery, $options: "i" } },
+          { category: { $regex: searchQuery, $options: "i" } },
+        ],
+      };
     }
 
-    return NextResponse.json(products );
+    const products = await Product.find(filter).lean();
+    if (!products || products.length === 0) {
+      return NextResponse.json({ message: "No products found" }, { status: 404 });
+    }
+
+    return NextResponse.json(products);
   } catch (error) {
-    console.error("Error fetching products:", error);
-    return NextResponse.json(
-      { error: "Failed to fetching products:" },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: "Failed to fetch products" }, { status: 500 });
   }
 }
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,6 +72,7 @@ export async function POST(request: NextRequest) {
     if (
       !body.name ||
       !body.description ||
+      !body.category ||
       !body.imageUrl ||
       body.variants.length === 0
     ) {

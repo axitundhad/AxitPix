@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { IOrder } from "@/models/Order";
-import { Loader2, Download } from "lucide-react";
 import { IKImage } from "imagekitio-next";
 import { IMAGE_VARIANTS } from "@/models/Product";
 import { apiClient } from "@/lib/api-client";
 import mongoose from "mongoose";
+import { Download } from "lucide-react";
 
 interface PopulatedProduct {
   _id: mongoose.Types.ObjectId;
@@ -37,8 +37,8 @@ export default function OrdersPage() {
 
   if (loading) {
     return (
-      <div className="min-h-[70vh] flex justify-center items-center">
-        <Loader2 className="w-12 h-12 animate-spin text-primary" />
+       <div className="flex justify-center items-center py-12">
+        <div className="w-12 h-12 border-4 border-indigo-800 border-dashed rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -50,7 +50,7 @@ export default function OrdersPage() {
       </h1>
       {orders.length === 0 && (
         <div className="text-center text-indigo-800 py-20 text-base-content/70 text-lg">
-          <p className=""> You haven’t made any purchases.</p>
+          <p className=""> You haven&apos;t made any purchases.</p>
           <p className="mt-2">
             When you buy an image, your order details will show up here for easy
             access and downloads.
@@ -146,7 +146,7 @@ export default function OrdersPage() {
                         </div>
                       </div>
 
-                      <div className="text-right flex flex-col justify-between items-end">
+                      <div className="text-right flex flex-col justify-between items-start sm:items-end">
                         <p className="text-2xl font-bold text-base-content">
                           ${order.amount.toFixed(2)}
                         </p>
@@ -164,8 +164,8 @@ export default function OrdersPage() {
                               ?.toString()
                               .slice(-6)}.jpg`}
                           >
-                            <Download className="w-5 h-4" />
-                            Download High Quality
+                            <Download className="w-4 h-4" />
+                            Download Image 
                           </a>
                         
                       </div>

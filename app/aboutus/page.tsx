@@ -14,7 +14,7 @@ export default function AboutPage() {
             About us
           </h1>
           {/* Admin Photo */}
-          <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-2xl border-4  border-blue-50">
+          <div className="relative w-40 h-40 rounded-full overflow-hidden shadow-2xl border-4  border-indigo-900">
             <Image src="/admin.png" alt="Admin" fill className="object-cover" />
           </div>
 
@@ -23,7 +23,7 @@ export default function AboutPage() {
             Axit Undhad
           </h1>
           <h1 className="text-xl font-bold  mb-4 text-center">
-            Developer & Admin, AxitPix
+            Developer & Admin - AxitPix
           </h1>
           <ul className="max-w-3xl px-10  text-justify text-lg text-indigo-800 leading-relaxed">
             <li className="flex items-start gap-2">

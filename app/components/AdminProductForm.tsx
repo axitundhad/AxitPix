@@ -23,6 +23,7 @@ export default function AdminProductForm() {
     defaultValues: {
       name: "",
       description: "",
+      category: "",
       imageUrl: "",
       variants: [
         {
@@ -53,6 +54,7 @@ export default function AdminProductForm() {
       // Reset form after successful submission
       setValue("name", "");
       setValue("description", "");
+      setValue("category", "");
       setValue("imageUrl", "");
       setValue("variants", [
         {
@@ -76,7 +78,7 @@ export default function AdminProductForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="w-full mx-auto bg-white shadow-xl text-indigo-800 rounded-2xl p-6 md:p-8 space-y-6"
     >
-      <div className="form-control w-full mx-aut  grid grid-cols-[20%_80%] items-center">
+      <div className="form-control w-full mx-auto flex flex-col  sm:grid grid-cols-[20%_80%] items-center">
         <label className="label font-medium text-sm md:text-base ">
           Product Name:{" "}
         </label>
@@ -95,7 +97,7 @@ export default function AdminProductForm() {
         )}
       </div>
 
-      <div className="form-control w-full mx-auto grid grid-cols-[20%_80%] items-center">
+      <div className="form-control w-full mx-auto flex flex-col sm:grid grid-cols-[20%_80%] items-center">
         <label className="label font-medium text-sm md:text-base ">
           Description:{" "}
         </label>
@@ -113,7 +115,26 @@ export default function AdminProductForm() {
         )}
       </div>
 
-      <div className="form-control w-full mx-auto grid grid-cols-[20%_80%] items-center">
+      <div className="form-control w-full mx-aut flex flex-col sm:grid grid-cols-[20%_80%] items-center">
+        <label className="label font-medium text-sm md:text-base ">
+          Category:{" "}
+        </label>
+        <input
+          type="text"
+          className={`input input-bordered bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base placeholder:text-gray-400 transition duration-200 ${
+            errors.name ? "border-red-500 focus:ring-red-500" : ""
+          }`}
+          placeholder="Ex. Bird. Nature, Electronics, Food, etc."
+          {...register("category", { required: "category is required for searching" })}
+        />
+        {errors.name && (
+          <span className="text-sm text-red-600 mt-1">
+            {errors.name.message}
+          </span>
+        )}
+      </div>
+
+      <div className="form-control w-full mx-auto flex flex-col sm:grid grid-cols-[20%_80%] items-center">
         <label className="label font-medium  text-sm md:text-base">
           Product Image:
         </label>
@@ -130,7 +151,7 @@ export default function AdminProductForm() {
           key={field.id}
           className="bg-gray-50 rounded-xl p-5 md:p-6 shadow-lg space-y-4"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20">
             {/* Size & Aspect Ratio */}
             <div className="form-control w-full flex flex-col items-center">
               <label className="text-sm md:text-base font-medium mb-1 text-center">
@@ -141,7 +162,7 @@ export default function AdminProductForm() {
                 {...register(`variants.${index}.type`)}
               >
                 {Object.entries(IMAGE_VARIANTS).map(([key, value]) => (
-                  <option key={key} value={value.type}>
+                  <option key={key} value={value.type} className="h-5 w-5">
                     {value.label} ({value.dimensions.width}x
                     {value.dimensions.height})
                   </option>

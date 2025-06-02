@@ -79,7 +79,7 @@ export default function ProductPage() {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
         amount, // in smallest currency unit (e.g., paise for INR, cents for USD)
         currency: "USD",
-        name: "ImageKit Shop",
+        name: "AxitPix",
         description: `${product.name} - ${variant.type} Version`,
         order_id: orderId,
         handler: function () {

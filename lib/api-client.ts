@@ -28,21 +28,29 @@ class ApiClient {
     };
 
     const response = await fetch(endpoint, {
-    // const response = await fetch(`http://localhost:3000/api/products`, {
+      // const response = await fetch(`http://localhost:3000/api/products`, {
       method,
       headers: defaultHeaders,
       body: body ? JSON.stringify(body) : undefined,
     });
 
     if (!response.ok) {
+      if (response.status === 404) {
+        return response.json(); // Return empty products list on 404
+      }
       throw new Error(response.statusText);
     }
 
     return response.json();
   }
 
-  async getProducts() {
-    return this.fetch<IProduct[]>("/api/products");
+  // async getProducts() {
+  //   return this.fetch<IProduct[]>("/api/products");
+  // }
+
+  async getProducts(searchTerm?: string) {
+    const query = searchTerm ? `?search=${encodeURIComponent(searchTerm)}` : "";
+    return this.fetch<IProduct[]>(`/api/products${query}`);
   }
 
   async getProduct(id: string) {
