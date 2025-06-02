@@ -1,69 +1,10 @@
-// "use client";
-
-// import { apiClient } from "@/lib/api-client";
-// import { IProduct } from "@/models/Product";
-// import { useEffect, useState } from "react";
-// import ImageGallery from "./components/ImageGallery";
-
-// export default function Home() {
-//   const [products, setProducts] = useState<IProduct[]>([]);
-//   const [isLoading, setIsLoading] = useState(true);
-//   const [searchTerm, setSearchTerm] = useState("");
-
-//   useEffect(() => {
-//     const fetchProducts = async (query = "") => {
-//       try {
-//         const data = await apiClient.getProducts(query);
-//         setProducts(data);
-//       } catch (error) {
-//         console.error("Error fetching products:", error);
-//       } finally {
-//         setIsLoading(false);
-//       }
-//     };
-
-//     fetchProducts();
-//   }, []);
-
-//     const handleSearch = (e: React.FormEvent) => {
-//     e.preventDefault();
-//     fetchProducts(searchTerm.trim());
-//   };
-
-//   return (
-//     <main className="w-[90%] mx-auto px-4 md:px-8 py-5 ">
-//       <h1 className="text-3xl md:text-3xl text-indigo-800 font-extrabold text-center mb-10 tracking-tight">
-//         Discover & Purchase Stunning Photos, Curated Just for You
-//       </h1>
-//        {/* 🔍 Search Bar */}
-//       <form onSubmit={handleSearch} className="mb-4 flex gap-2">
-//         <input
-//           type="text"
-//           placeholder="Search by title, description or category..."
-//           className="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none"
-//           value={searchTerm}
-//           onChange={(e) => setSearchTerm(e.target.value)}
-//         />
-//         <button
-//           type="submit"
-//           className="px-4 py-2 bg-indigo-700 text-white rounded-md hover:bg-indigo-800 transition"
-//         >
-//           Search
-//         </button>
-//       </form>
-//       <div className="">
-//         <ImageGallery products={products} loading={isLoading} />
-//       </div>
-//     </main>
-//   );
-// }
-
 "use client";
-
 import { apiClient } from "@/lib/api-client";
 import { IProduct } from "@/models/Product";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+// import ImageSlider from "./components/ImageSlider";
 import ImageGallery from "./components/ImageGallery";
+import Image from "next/image";
 
 export default function Home() {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -81,6 +22,8 @@ export default function Home() {
     "City",
   ];
 
+  const galleryRef = useRef<HTMLDivElement | null>(null);
+
   const fetchProducts = async (query = "") => {
     setIsLoading(true);
     try {
@@ -93,13 +36,19 @@ export default function Home() {
     }
   };
 
-  const handleCategoryClick = (category: string) => {
+  const handleCategoryClick = async (category: string, scrollToGallery = false ) => {
     setSearchTerm(""); // Clear search bar
     setSelectedCategory(category);
     if (category === "All") {
-      fetchProducts();
+      await fetchProducts();
     } else {
-      fetchProducts(category.toLowerCase());
+      await fetchProducts(category.toLowerCase());
+    }
+     if (scrollToGallery && galleryRef.current) {
+      window.scrollTo({
+      top: galleryRef.current.offsetTop - 87, // 1000px offset for header
+      behavior: "smooth",
+    });
     }
   };
 
@@ -148,6 +97,17 @@ export default function Home() {
         ))}
       </div>
 
+      <div className="mb-3 relative cursor-pointer rounded-lg shadow-lg">
+        <button
+          className="absolute inset-0 z-10 opacity-0"
+          onClick={() => handleCategoryClick("Nature", true)} // ⭐ Pass scroll flag
+          aria-label="View Nature category"
+        />
+        
+        <Image src="/hero1.jpg" alt="Hero Image" width={1200} height={600} className="w-full sm:h-auto h-25 rounded-lg shadow-lg" />
+        
+      </div>
+
       <h1 className="text-2xl sm:text-3xl md:text-4xl text-indigo-800 font-extrabold text-center mb-6 tracking-tight">
         Discover & Purchase Stunning Photos, Curated Just for You
       </h1>
@@ -162,6 +122,7 @@ export default function Home() {
       ) : (
         <ImageGallery products={products} loading={isLoading} />
       )} */}
+      <div ref={galleryRef} className="min-h-screen">
       {!isLoading && products.length === 0 ? (
         <p className="text-center text-gray-500 text-lg mt-10">
           {searchTerm
@@ -171,6 +132,7 @@ export default function Home() {
       ) : (
         <ImageGallery products={products} loading={isLoading} />
       )}
+      </div>
     </main>
   );
 }
