@@ -11,6 +11,7 @@
     "ngrok": "node ngrok.js"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "bcryptjs": "^3.0.2",
     "dotenv": "^16.5.0",
     "imagekit": "^6.0.0",
