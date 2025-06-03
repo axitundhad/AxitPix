@@ -58,11 +58,10 @@ export async function POST(req: NextRequest) {
         - Order ID: ${order._id.toString().slice(-6)}
         - Product: ${order.productId.name}
         - Version: ${order.variants.type}
-        - License: ${order.variants.license}
         - Price: $${order.amount.toFixed(2)}
 
         Your image is now available in your orders page.
-        Thank you for shopping with ImageKit Shop!
+        Thank you for shopping with AxitPix ImageKit Shop!
                   `.trim(),
         });
         //         const transporter = nodemailer.createTransport({
