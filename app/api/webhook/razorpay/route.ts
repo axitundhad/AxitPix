@@ -36,44 +36,68 @@ export async function POST(req: NextRequest) {
         { path: "productId", select: "name" },
         { path: "userId", select: "email" },
       ]);
-
       if (order) {
         const transporter = nodemailer.createTransport({
-          host: "sandbox.smtp.mailtrap.io",
-          port: 2525,
+          host: "smtp.gmail.com",
+          port: 465,
+          secure: true,
           auth: {
-            user: process.env.MAILTRAP_USERNAME,
-            pass: process.env.MAILTRAP_PASS,
+            user: process.env.GMAIL_USER,
+            pass: process.env.GMAIL_PASS,
           },
         });
 
         await transporter.sendMail({
-          from: "admin@axitpix.com",
+          from: `"Admin AxitPix" <${process.env.GMAIL_USER}>`,
           to: order.userId.email,
           subject: "Order Completed",
           text: `
-Thank you for your purchase!
+           Thank you for your purchase!
 
-Order Details:
-- Order ID: ${order._id.toString().slice(-6)}
-- Product: ${order.productId.name}
-- Version: ${order.variants.type}
-- License: ${order.variants.license}
-- Price: $${order.amount.toFixed(2)}
+        Order Details:
+        - Order ID: ${order._id.toString().slice(-6)}
+        - Product: ${order.productId.name}
+        - Version: ${order.variants.type}
+        - License: ${order.variants.license}
+        - Price: $${order.amount.toFixed(2)}
 
-Your image is now available in your orders page.
-Thank you for shopping with ImageKit Shop!
-          `.trim(),
+        Your image is now available in your orders page.
+        Thank you for shopping with ImageKit Shop!
+                  `.trim(),
         });
+        //         const transporter = nodemailer.createTransport({
+        //           host: "sandbox.smtp.mailtrap.io",
+        //           port: 2525,
+        //           auth: {
+        //             user: process.env.MAILTRAP_USERNAME,
+        //             pass: process.env.MAILTRAP_PASS,
+        //           },
+        //         });
+
+        //         await transporter.sendMail({
+        //           from: "admin@axitpix.com",
+        //           to: order.userId.email,
+        //           subject: "Order Completed",
+        //           text: `
+        // Thank you for your purchase!
+
+        // Order Details:
+        // - Order ID: ${order._id.toString().slice(-6)}
+        // - Product: ${order.productId.name}
+        // - Version: ${order.variants.type}
+        // - License: ${order.variants.license}
+        // - Price: $${order.amount.toFixed(2)}
+
+        // Your image is now available in your orders page.
+        // Thank you for shopping with ImageKit Shop!
+        //           `.trim(),
+        //         });
       }
     }
 
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error("Webhook error:",error);
-    return NextResponse.json(
-      { error: "Webhook failed" },
-      { status: 500 }
-    );
+    console.error("Webhook error:", error);
+    return NextResponse.json({ error: "Webhook failed" }, { status: 500 });
   }
 }
