@@ -76,7 +76,7 @@ export default function AdminProductForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full mx-auto bg-white shadow-xl text-indigo-800 rounded-2xl p-6 md:p-8 space-y-6"
+      className="w-full mx-auto bg-indigo-100 shadow-xl text-indigo-800 rounded-2xl p-6 md:p-8 space-y-6"
     >
       <div className="form-control w-full mx-auto flex flex-col  sm:grid grid-cols-[20%_80%] items-center">
         <label className="label font-medium text-sm md:text-base ">
@@ -84,7 +84,7 @@ export default function AdminProductForm() {
         </label>
         <input
           type="text"
-          className={`input input-bordered bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base placeholder:text-gray-400 transition duration-200 ${
+          className={`input input-bordered focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base placeholder:text-gray-400 transition duration-200 ${
             errors.name ? "border-red-500 focus:ring-red-500" : ""
           }`}
           placeholder="Enter product name"
@@ -102,7 +102,7 @@ export default function AdminProductForm() {
           Description:{" "}
         </label>
         <textarea
-          className={`textarea textarea-bordered bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base mt-1 h-28 resize-none placeholder:text-gray-400 transition duration-200 ${
+          className={`textarea textarea-bordered  focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base mt-1 h-28 resize-none placeholder:text-gray-400 transition duration-200 ${
             errors.description ? "border-red-500 focus:ring-red-500" : ""
           }`}
           placeholder="Enter product description"
@@ -121,7 +121,7 @@ export default function AdminProductForm() {
         </label>
         <input
           type="text"
-          className={`input input-bordered bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base placeholder:text-gray-400 transition duration-200 ${
+          className={`input input-bordered focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm md:text-base placeholder:text-gray-400 transition duration-200 ${
             errors.name ? "border-red-500 focus:ring-red-500" : ""
           }`}
           placeholder="Ex. Bird. Nature, Electronics, Food, etc."
@@ -149,7 +149,7 @@ export default function AdminProductForm() {
       {fields.map((field, index) => (
         <div
           key={field.id}
-          className="bg-gray-50 rounded-xl p-5 md:p-6 shadow-lg space-y-4"
+          className="bg-indigo-100 rounded-xl p-5 md:p-6 shadow-lg space-y-4"
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20">
             {/* Size & Aspect Ratio */}
