@@ -44,8 +44,8 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="w-[80%] mx-auto text-indigo-800 px-4 py-10 rounded-md shadow-lg">
-      <h1 className="text-4xl font-bold mb-10 text-center text-indigo-800">
+    <div className="lg:w-[80%] mx-auto text-indigo-800 px-4 py-2 sm:py-10 rounded-md">
+      <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-10 text-center text-indigo-800">
         My Orders
       </h1>
       {orders.length === 0 && (
@@ -87,7 +87,7 @@ export default function OrdersPage() {
                   <div
                     className="relative rounded-xl overflow-hidden bg-base-200 shadow-inner"
                     style={{
-                      width: "200px",
+                      width: "260px",
                       aspectRatio: `${variantDimensions.width} / ${variantDimensions.height}`,
                     }}
                   >
@@ -98,7 +98,7 @@ export default function OrdersPage() {
                       transformation={[
                         {
                           quality: 60,
-                          width: variantDimensions.width.toString(),
+                          // width: variantDimensions.width.toString(),
                           height: variantDimensions.height.toString(),
                           cropMode: "extract",
                           focus: "center",
@@ -152,7 +152,7 @@ export default function OrdersPage() {
                         </p>
                         
                           <a
-                            href={`${process.env.NEXT_PUBLIC_URL_ENDPOINT}/tr:q-100,w-${variantDimensions.width},h-${variantDimensions.height},cm-extract,fo-center/${product.imageUrl}`}
+                            href={`${process.env.NEXT_PUBLIC_URL_ENDPOINT}/tr:q-100,h-${variantDimensions.height},cm-extract,fo-center/${product.imageUrl}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`btn btn-primary mt-4 sm:mt-0 flex items-center gap-2 ${

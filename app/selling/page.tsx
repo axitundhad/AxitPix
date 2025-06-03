@@ -43,7 +43,7 @@ export default function SellingPage() {
   const totalAmount = orders.reduce((sum, order) => sum + order.amount, 0);
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-4">
+    <main className="max-w-5xl mx-auto sm:px-4 py-4">
       <h1 className="text-3xl font-bold mb-6 text-center text-indigo-800">
         Total Selling
       </h1>

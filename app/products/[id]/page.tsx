@@ -137,7 +137,7 @@ export default function ProductPage() {
     );
 
   return (
-    <div className="container w-[90%] mx-auto px-4 py-8">
+    <div className="container w-[90%] mx-auto sm:px-4 py-8">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Image Section */}
         <div
@@ -181,7 +181,7 @@ export default function ProductPage() {
         {/* Product Details Section */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-4xl text-indigo-800 font-bold mb-2">
+            <h1 className="text-3xl sm:text-4xl text-indigo-800 font-bold mb-2">
               {product.name}
             </h1>
             <p className="text-base-content/80 text-indigo-800 text-lg">
@@ -205,7 +205,7 @@ export default function ProductPage() {
                 onClick={() => setSelectedVariant(variant)}
               >
                 <div className="card-body p-4">
-                  <div className="flex justify-between items-center">
+                  <div className="flex flex-col gap-2 sm:flex-row justify-between items-center">
                     <div className="flex items-center gap-3">
                       <ImageIcon className="w-5 h-5 text-indigo-800" />
                       <div className="text-indigo-800 hover:text-indigo-600">
@@ -232,12 +232,12 @@ export default function ProductPage() {
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4">
-                      <span className="text-xl text-indigo-800 font-bold">
+                    <div className="flex items-center gap-7">
+                      <span className="text-xl ml-1 sm:ml-0 text-indigo-800 font-bold">
                         ${variant.price.toFixed(2)}
                       </span>
                       <button
-                        className="btn btn-primary btn-sm"
+                        className="btn btn-primary btn-sm ml-14 sm:ml-0"
                         onClick={(e) => {
                           e.stopPropagation();
                           handlePurchase(variant);

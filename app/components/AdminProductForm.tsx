@@ -76,8 +76,11 @@ export default function AdminProductForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full mx-auto bg-indigo-100 shadow-xl text-indigo-800 rounded-2xl p-6 md:p-8 space-y-6"
+      className="w-full mx-auto bg-blue-100 lg:w-[80%] shadow-xl text-indigo-800 rounded-2xl p-6 md:p-8 space-y-6"
     >
+      <h1 className="text-2xl sm:text-3xl font-bold text-center text-indigo-800 ">
+          Add New Product
+        </h1>
       <div className="form-control w-full mx-auto flex flex-col  sm:grid grid-cols-[20%_80%] items-center">
         <label className="label font-medium text-sm md:text-base ">
           Product Name:{" "}
@@ -149,7 +152,7 @@ export default function AdminProductForm() {
       {fields.map((field, index) => (
         <div
           key={field.id}
-          className="bg-indigo-100 rounded-xl p-5 md:p-6 shadow-lg space-y-4"
+          className="bg-blue-100 rounded-xl p-5 md:p-6 shadow-lg space-y-4"
         >
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-20">
             {/* Size & Aspect Ratio */}

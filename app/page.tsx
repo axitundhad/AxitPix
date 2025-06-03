@@ -62,13 +62,13 @@ export default function Home() {
   };
 
   return (
-    <main className="w-[90%] mx-auto px-4 md:px-8 py-5">
+    <main className="w-[90%] mx-auto sm:px-4 md:px-8 sm:py-3 py-5">
       {/* 🔍 Search Bar */}
       <form onSubmit={handleSearch} className="mb-6 flex gap-2">
         <input
           type="text"
           placeholder="Search images"
-          className="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-md focus:outline-none"
+          className="w-full sm:px-4 py-2 border border-indigo-300 rounded-md shadow-md focus:outline-none"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -86,7 +86,7 @@ export default function Home() {
           <button
             key={category}
             onClick={() => handleCategoryClick(category)}
-            className={`px-4 py-2 rounded-full border-2 shadow-lg transition ${
+            className={`sm:px-4 py-2 rounded-full border-2 shadow-lg transition ${
               selectedCategory === category
                 ? "bg-indigo-700 text-white border-2"
                 : "bg-indigo-100 text-indigo-700 opacity-60 hover:opacity-100"
