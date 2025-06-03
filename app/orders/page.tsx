@@ -44,7 +44,7 @@ export default function OrdersPage() {
   }
 
   return (
-    <div className="lg:w-[80%] mx-auto text-indigo-800 px-4 py-2 sm:py-10 rounded-md">
+    <div className="lg:w-[80%] mx-auto text-indigo-800 px-4 py-2 sm:py-5 rounded-md">
       <h1 className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-10 text-center text-indigo-800">
         My Orders
       </h1>
@@ -79,7 +79,7 @@ export default function OrdersPage() {
           return (
             <div
               key={order._id?.toString()}
-              className="bg-blue-100 border border-indigo-100 rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-300"
+              className="bg-blue-100 border rounded-2xl shadow-2xl hover:shadow-xl transition-all duration-300"
             >
               <div className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-center">

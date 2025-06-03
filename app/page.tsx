@@ -68,7 +68,7 @@ export default function Home() {
         <input
           type="text"
           placeholder="Search images"
-          className="w-full sm:px-4 py-2 border border-indigo-300 rounded-md shadow-md focus:outline-none"
+          className="w-full sm:px-4 py-2 border border-indigo-600 rounded-md shadow-md focus:outline-none"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -108,7 +108,7 @@ export default function Home() {
         
       </div>
 
-      <h1 className="text-2xl sm:text-3xl md:text-4xl text-indigo-800 font-extrabold text-center mb-6 tracking-tight">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl text-indigo-800 font-extrabold text-center mb-8 mt-6 tracking-tight">
         Discover & Purchase Stunning Photos, Curated Just for You
       </h1>
 

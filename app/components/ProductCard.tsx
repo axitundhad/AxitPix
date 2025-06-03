@@ -17,7 +17,7 @@ export default function ProductCard({ product }: { product: IProduct }) {
   : 0;
 
   return (
-    <div className="card bg-blue-100 border border-gray-200  rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+    <div className="card bg-blue-100 border  rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
       <figure className="relative px-4 pt-4">
         <Link
           href={`/products/${product._id}`}
