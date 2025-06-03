@@ -47,7 +47,7 @@ export default function SellingPage() {
       <h1 className="text-3xl font-bold mb-6 text-center text-indigo-800">
         Total Selling
       </h1>
-      <div className="bg-blue-100 shadow-md rounded-lg p-4 mb-6 text-indigo-800">
+      <div className="bg-blue-100 shadow-md border border-indigo-600 rounded-lg p-4 mb-6 text-indigo-800">
         <p className="text-lg font-medium">
           🧾 Total Orders: <span className="font-bold">{orders.length}</span>
         </p>

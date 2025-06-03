@@ -44,7 +44,7 @@ export default function Register() {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-blue-100 rounded-xl shadow-2xl p-8 border border-gray-200">
+    <div className="max-w-md mx-auto bg-blue-100 rounded-xl shadow-2xl p-8 mt-10 border border-gray-200">
       <h1 className="text-2xl font-bold mb-6 text-indigo-800 text-center">
         Register
       </h1>
