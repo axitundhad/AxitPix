@@ -9,7 +9,7 @@ export default function AboutPage() {
   return (
     <>
       <div className="flex items-center justify-center">
-        <div className="min-h-screen max-w-4xl  bg-blue-100 rounded-2xl shadow-2xl text-indigo-800 pt-8 pb-1 px-6 flex flex-col items-center">
+        <div className="max-w-4xl min-h-screen bg-blue-100 rounded-2xl shadow-2xl text-indigo-800 pt-8 pb-1 px-6 flex flex-col items-center">
           <h1 className="text-3xl text-indigo-800 font-extrabold text-center mb-10 tracking-tight">
             About us
           </h1>
@@ -25,7 +25,7 @@ export default function AboutPage() {
           <h1 className="text-xl font-bold  mb-4 text-center">
             Developer & Admin - AxitPix
           </h1>
-          <ul className="max-w-3xl px-10  text-justify text-lg text-indigo-800 leading-relaxed">
+          <ul className="max-w-3xl px-3 md:px-10  text-justify text-lg text-indigo-800 leading-relaxed">
             <li className="flex items-start gap-2">
               <Pointer className="rotate-90 size-5 mt-1 flex-shrink-0 " />
               <p className="text-justify">
@@ -89,11 +89,11 @@ export default function AboutPage() {
             </div>
 
             {/* Quick Links */}
-            <div>
-              <h3 className="text-xl text-indigo-900 md:pl-8 font-semibold mb-3">
+            <div className="md:ml-7">
+              <h3 className="text-xl text-indigo-900  font-semibold mb-3">
                 Quick Links
               </h3>
-              <ul className="space-y-2 text-sm md:pl-15">
+              <ul className="space-y-2 text-sm ">
                 <li>
                   <Link href="/" className="hover:text-indigo-600">
                     Home
