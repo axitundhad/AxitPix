@@ -152,7 +152,7 @@ export default function OrdersPage() {
                         </p>
                         
                           <a
-                            href={`${process.env.NEXT_PUBLIC_URL_ENDPOINT}/tr:q-100,h-${variantDimensions.height},cm-extract,fo-center/${product.imageUrl}`}
+                            href={`${process.env.NEXT_PUBLIC_URL_ENDPOINT}/tr:q-100,w-${variantDimensions.width},h-${variantDimensions.height},cm-resize/${product.imageUrl}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`btn btn-primary mt-4 sm:mt-0 flex items-center gap-2 ${

@@ -113,7 +113,8 @@ export default function ProductPage() {
       {
         width: variant.dimensions.width.toString(),
         height: variant.dimensions.height.toString(),
-        raw: `crop=extract&focus=center&quality=60`,
+        raw: `c-extract,fo-center,q-60`,
+        // raw: `crop=extract&focus=center&quality=60`,
         // crop: "extract",
         // focus: "center",
         // quality: "60",
