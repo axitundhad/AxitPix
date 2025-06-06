@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     await connectDB();
-    const orders = await Order.find({})
+    const orders = await Order.find({status: "completed"})
       .populate("userId", "email")
       .populate("productId", "imageUrl")
       .lean()

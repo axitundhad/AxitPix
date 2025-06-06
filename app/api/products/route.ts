@@ -45,7 +45,7 @@ export async function GET(req: NextRequest) {
       };
     }
 
-    const products = await Product.find(filter).lean();
+    const products = await Product.find(filter).lean().sort({ createdAt: -1 });
     if (!products || products.length === 0) {
       return NextResponse.json({ message: "No products found" }, { status: 404 });
     }

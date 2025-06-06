@@ -65,7 +65,9 @@ export default function SellingPage() {
         <p className="text-center text-gray-500">No orders found</p>
       ) : (
         <div className="space-y-4">
-          {orders.map((order) => (
+          {orders.map((order) => {
+             if (!order.productId) return null;
+            return (
             <div
               key={order._id}
               className="border p-4 rounded-lg shadow-md bg-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -105,7 +107,8 @@ export default function SellingPage() {
                 ${order.amount.toFixed(2)}
               </p>
             </div>
-          ))}
+            )
+})}
         </div>
       )}
     </main>
