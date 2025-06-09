@@ -1,8 +1,13 @@
-# AXITPIX
+<div align="center">
+  
+### AXITPIX
+  
+</div>
 
-*Empowering your vision through stunning imagery sales.*
+*I developed AxitPix not only as a learning project, but also as a real-world example of how even individuals and small business owners can bring their products online through a sleek, modern digital platform. This site features full integration with Razorpay for secure, real-time bank-to-bank transactions, and includes various functionalities such as high-quality image management, variant-based licensing, and responsive design. My goal was to demonstrate that selling online doesn't require a massive team or complex infrastructure—it just needs the right vision and execution. If you're a seller or entrepreneur who wants to build something similar, I'd be happy to help turn your ideas into a working, fully customized platform.*
 
-![last-commit](https://img.shields.io/github/last-commit/axitundhad/AxitPix?style=flat&logo=git&logoColor=white&color=0080ff)
+<div align="center">
+  
 ![repo-top-language](https://img.shields.io/github/languages/top/axitundhad/AxitPix?style=flat&color=0080ff)
 ![repo-language-count](https://img.shields.io/github/languages/count/axitundhad/AxitPix?style=flat&color=0080ff)
 
@@ -20,7 +25,7 @@
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3.svg?style=flat&logo=ESLint&logoColor=white)
 ![Swiper](https://img.shields.io/badge/Swiper-6332F6.svg?style=flat&logo=Swiper&logoColor=white)
 ![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-EC5990.svg?style=flat&logo=React-Hook-Form&logoColor=white)
-
+</div>
 ---
 
 ## 📚 Table of Contents
@@ -29,8 +34,6 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Usage](#usage)
-  - [Testing](#testing)
 
 ---
 
